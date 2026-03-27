@@ -254,6 +254,60 @@ header {
 
 }
 
+/* Video Tour */
+.video-tour {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.video-tour .section-title {
+  color: var(--secondary-color);
+}
+
+.video-tour .section-title::after {
+  background-color: var(--text-light);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.video-container::before {
+  content: "ĐANG TRẢI NGHIỆM VIDEO YOUTUBE...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-align: center;
+  z-index: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 1;
+}
+
 /* Floor Plans */
 .floor-plans {
   background-color: var(--accent-color);
@@ -614,6 +668,89 @@ header {
   }
 }
 
+/* Floating Call Button */
+.floating-call {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.floating-call:hover {
+  transform: scale(1.05);
+}
+
+.call-icon {
+  font-size: 1.8rem;
+  z-index: 2;
+  animation: ring 1.5s infinite;
+}
+
+.call-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(20deg);
+  }
+
+  20% {
+    transform: rotate(-20deg);
+  }
+
+  30% {
+    transform: rotate(20deg);
+  }
+
+  40% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .overview-grid {
@@ -671,17 +808,11 @@ header {
     padding: 25px 20px;
   }
 
-  .tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tab-btn {
-    white-space: nowrap;
-    flex: 0 0 auto;
+  .tab-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .image-lightbox img {
